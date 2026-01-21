@@ -25,3 +25,23 @@
  fruits.splice(1, 1, "orange", "grape");
  console.log(fruits); // Output: ["apple", "orange", "grape", "cherry"]
 
+//home all js string methods practice
+let message = "Hello, welcome to JavaScript programming!";
+console.log(message.length); // Output: 36
+
+//2. string slice
+let str = "JavaScript is fun";
+let slicedStr = str.slice(0, 10);
+console.log(slicedStr); // Output: "JavaScript"
+
+//3 substring
+let str1 = "Hello, World!";
+let substr1 = str1.substring(7, 12);
+console.log(substr1); // Output: "World"    
+
+//4 indexOf
+const paragraph = 'The quick brown fox jumps over the lazy dog. If the dog barked, was it really lazy?';
+const indexOfFirst = paragraph.indexOf("dog");
+console.log(indexOfFirst); // Output: 40
+
+// substr
