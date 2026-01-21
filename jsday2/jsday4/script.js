@@ -45,3 +45,30 @@ const indexOfFirst = paragraph.indexOf("dog");
 console.log(indexOfFirst); // Output: 40
 
 // substr
+let str2 = "JavaScript is awesome";
+let substr2 = str2.substr(0, 10);
+console.log(substr2); // Output: "JavaScript"   
+
+//case change
+let name = "John Doe";
+let upperCaseName = name.toUpperCase();  
+let lowerCaseName = name.toLowerCase(); 
+console.log(upperCaseName);
+console.log(lowerCaseName); 
+
+//concat
+let greet1 = "Hello, ";
+let greet2 = "how are you?";
+let fullGreet = greet1.concat(greet2);
+console.log(fullGreet); // Output: "Hello, how are you?"
+
+//trim
+let str3 = "   Hello World!   ";
+let trimmedStr = str3.trim();
+console.log(trimmedStr); // Output: "Hello World!"
+
+//split
+let str4 = "apple,banana,cherry";
+let fruitsArray = str4.split(",");
+console.log(fruitsArray); // Output: ["apple", "banana", "cherry"]
+  
