@@ -15,3 +15,4 @@ for(let i = 0; i < subHeading.length; i++) {
     subHeading[i].textContent = "Sub-heading modified by JavaScript!";
     subHeading[1].style.color = "green";
 }
+
