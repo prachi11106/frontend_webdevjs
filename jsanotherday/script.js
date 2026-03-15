@@ -91,3 +91,61 @@ eventContainer.addEventListener("click",(event)=>{
 })
 
 // event name-keydown: to track the keys which pressed by the user
+
+function multiply(a, b) {
+  return a * b;             // Step 4: returns 25, popped off stack
+}
+
+function square(n) {
+  return multiply(n, n);    // Step 3: calls multiply → pushed onto stack
+}
+
+function printSquare(n) {
+  let result = square(n);   // Step 2: calls square → pushed onto stack
+  console.log(result);
+}
+
+printSquare(5);             // Step 1: called → pushed onto stack
+
+// Call Stack step by step:
+// → [GEC]
+// → [printSquare] [GEC]
+// → [square] [printSquare] [GEC]
+// → [multiply] [square] [printSquare] [GEC]
+// ← multiply returns 25   → popped
+// ← square returns 25     → popped
+// ← printSquare logs 25   → popped
+// → [GEC] only — done
+
+
+// Real scenario: Login → Fetch Profile → Fetch Posts → Display
+
+login(username, password, function(err, user) {
+  if (err) { handleError(err); return; }
+
+  getUserProfile(user.id, function(err, profile) {
+    if (err) { handleError(err); return; }
+
+    getUserPosts(profile.id, function(err, posts) {
+      if (err) { handleError(err); return; }
+
+      displayDashboard(user, profile, posts, function(err, result) {
+        if (err) { handleError(err); return; }
+
+        console.log('Dashboard loaded!', result);
+        // Imagine even MORE nesting here...
+      });
+    });
+  });
+});
+// Creating a Promise:
+let myPromise = new Promise(function(resolve, reject) {
+  // Do some async work here (e.g., fetch data, read file)...
+  let success = true;
+
+  if (success) {
+    resolve('Data loaded successfully!');   // fulfill the promise
+  } else {
+    reject(new Error('Something went wrong!'));  // reject it
+  }
+});
