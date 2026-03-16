@@ -149,3 +149,63 @@ let myPromise = new Promise(function(resolve, reject) {
     reject(new Error('Something went wrong!'));  // reject it
   }
 });
+// HTML needed:
+// <input id='taskInput' type='text' placeholder='Enter task'>
+// <button id='addBtn'>Add Task</button>
+// <ul id='taskList'></ul>
+
+let input    = document.getElementById('taskInput');
+let addBtn   = document.getElementById('addBtn');
+let taskList = document.getElementById('taskList');
+
+addBtn.addEventListener('click', function() {
+  let text = input.value.trim();
+  if (text === '') return;   // do nothing if empty
+
+  // 1. CREATE list item:
+  let li = document.createElement('li');
+  li.textContent = text;
+
+  // 2. CREATE delete button:
+  let delBtn = document.createElement('button');
+  delBtn.textContent = 'Delete';
+  delBtn.addEventListener('click', function() {
+    li.remove();   // 3. REMOVE the li when delete clicked
+  });
+
+  // 4. APPEND button into li, then li into list:
+  li.appendChild(delBtn);
+  taskList.appendChild(li);
+
+  input.value = '';   // clear the input
+});
+// HTML needed:
+// <input id='taskInput' type='text' placeholder='Enter task'>
+// <button id='addBtn'>Add Task</button>
+// <ul id='taskList'></ul>
+
+let input1    = document.getElementById('taskInput');
+let addBtn2   = document.getElementById('addBtn');
+let taskList3 = document.getElementById('taskList');
+
+addBtn.addEventListener('click', function() {
+  let text = input.value.trim();
+  if (text === '') return;   // do nothing if empty
+
+  // 1. CREATE list item:
+  let li = document.createElement('li');
+  li.textContent = text;
+
+  // 2. CREATE delete button:
+  let delBtn = document.createElement('button');
+  delBtn.textContent = 'Delete';
+  delBtn.addEventListener('click', function() {
+    li.remove();   // 3. REMOVE the li when delete clicked
+  });
+
+  // 4. APPEND button into li, then li into list:
+  li.appendChild(delBtn);
+  taskList.appendChild(li);
+
+  input.value = '';   // clear the input
+});
