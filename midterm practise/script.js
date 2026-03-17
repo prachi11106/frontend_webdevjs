@@ -149,3 +149,40 @@ child.addEventListener('click', function() {
 // 1. Child fired (target)
 // 2. Parent fired (bubbled here)
 // 3. Grandparent fired (bubbled here)
+// Assume data.json contains: {"users": [{"name":"Alice"},{"name":"Bob"}]}
+
+const fs = require('fs');
+
+// --- READ ---
+let rawData = fs.readFileSync('./data.json', 'utf8');  // read as string
+let data    = JSON.parse(rawData);                     // parse to JS object
+console.log(data.users);  // [{name:'Alice'},{name:'Bob'}]
+
+// --- WRITE ---
+let newData = { users: [{ name: 'Charlie', age: 30 }] };
+let jsonStr = JSON.stringify(newData, null, 2);  // convert to JSON string
+fs.writeFileSync('./output.json', jsonStr, 'utf8');
+console.log('File saved!');
+
+async function getUser(id) {
+  try {
+    let response = await fetch('/api/users/' + id);
+
+    if (!response.ok) {
+      throw new Error('User not found');   // throw error manually
+    }
+
+    let user = await response.json();
+    console.log('User:', user.name);
+    return user;
+
+  } catch (error) {
+    console.log('Error caught:', error.message);
+
+  } finally {
+    console.log('Done — runs no matter what');
+  }
+}
+
+getUser(1);
+
